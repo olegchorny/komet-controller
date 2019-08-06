@@ -1,0 +1,37 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: mailgun
+spec:
+  inputs:
+    params:
+    - name: to
+      description: mailto
+      default: "oleg.chorny@gmail.com"
+    - name: text
+      description: text to send
+      default: api:2d55615f43a335449827142f60df277f-fd0269a6-04c9a703
+    - name: key
+      description: key to auth
+      default: api:2d55615f43a335449827142f60df277f-fd0269a6-04c9a703
+#    - name: buffer
+#      description: file to save output
+#      default: '/workspace/buffer.txt'
+  steps:
+  - name: curl
+    image: plerionio/curl
+    command: 
+    - curl
+    - -s 
+    - --user 
+    - ${inputs.params.key}
+      #    - api:2d55615f43a335449827142f6a0df277f-fd0269a6-04c9a703
+    - https://api.mailgun.net/v3/mg.plerion.io/messages
+    - -F
+    - from="Komet <komet@mg.plerion.io>"
+    - -F
+    - to=${inputs.params.to} 
+    - -F
+    - subject="Your komet is ready"
+    - -F
+    - text=${inputs.params.text}

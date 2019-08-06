@@ -1,0 +1,11 @@
+apiVersion: cloud.plerion.io/v1alpha1
+kind: Komet
+metadata:
+  name: details
+  namespace: komet
+spec:
+  # Add fields here
+  gitSource: "https://github.com/olegchorny/bookinfo-details"
+  gitBranch: "master"
+  dockerImage: "ochorny/bookinfo-details"
+  version: "demo-v1"

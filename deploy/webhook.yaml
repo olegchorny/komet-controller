@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: webhook
+type: Opaque
+data:
+  secret: ZW5pbWFs

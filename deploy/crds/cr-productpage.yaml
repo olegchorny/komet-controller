@@ -1,0 +1,11 @@
+apiVersion: cloud.plerion.io/v1alpha1
+kind: Komet
+metadata:
+  name: productpage
+  namespace: komet
+spec:
+  # Add fields here
+  gitSource: "https://github.com/olegchorny/bookinfo-productpage"
+  gitBranch: "master"
+  dockerImage: "ochorny/bookinfo-productpage"
+  version: "demo-v1"
